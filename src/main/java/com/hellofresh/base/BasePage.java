@@ -4,7 +4,7 @@ import com.github.javafaker.Faker;
 import com.hellofresh.exceptions.ApplicationException;
 import com.hellofresh.exceptions.TestAutomationException;
 import com.hellofresh.exceptions.UnhandledException;
-import com.hellofresh.util.DriverFactory;
+import com.hellofresh.driverUtil.DriverFactory;
 import com.hellofresh.util.ExtentReportCreator;
 import com.hellofresh.util.ScreenCapture;
 import org.openqa.selenium.*;
@@ -14,7 +14,6 @@ import org.testng.Assert;
 
 public class BasePage {
 
-    //    TODO: add comments
     protected static Faker faker = new Faker();
 
     protected WebElement findElement(By findBy) throws TestAutomationException {

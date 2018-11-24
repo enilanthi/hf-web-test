@@ -1,4 +1,4 @@
-package com.hellofresh.util;
+package com.hellofresh.driverUtil;
 
 import com.hellofresh.exceptions.ScriptException;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -10,20 +10,17 @@ import java.net.URL;
 
 public class DriverFactory {
 
-    private static RemoteWebDriver driver;
-    private static String browser;
+    private static ThreadLocal<RemoteWebDriver> driver = new ThreadLocal<RemoteWebDriver>();
+    private static ThreadLocal<String> browser = new ThreadLocal<String>();
 
-    private DriverFactory(){
+    private DriverFactory() {
 
     }
 
     public static RemoteWebDriver createDriverInstance(String browserType) throws ScriptException {
-        if (driver==null || driver.getSessionId()==null){
-            driver = getSpecificDriverInstance(browserType);
-            browser = browserType;
-        }
-
-        return driver;
+        driver.set(getSpecificDriverInstance(browserType));
+        browser.set(browserType);
+        return driver.get();
     }
 
     private static RemoteWebDriver getSpecificDriverInstance(String browserType) throws ScriptException {
@@ -32,11 +29,11 @@ public class DriverFactory {
             URL driverPath = DriverFactory.class.getClassLoader().getResource("drivers/chromedriver.exe");
             System.setProperty("webdriver.chrome.driver", driverPath.getPath());
             return new ChromeDriver();
-        } else  if (browserType.equalsIgnoreCase("firefox")) {
+        } else if (browserType.equalsIgnoreCase("firefox")) {
             URL driverPath = DriverFactory.class.getClassLoader().getResource("drivers/geckodriver.exe");
             System.setProperty("webdriver.gecko.driver", driverPath.getPath());
             return new FirefoxDriver();
-        } else  if (browserType.equalsIgnoreCase("ie")) {
+        } else if (browserType.equalsIgnoreCase("ie")) {
 //            TODO: test this
             URL driverPath = DriverFactory.class.getClassLoader().getResource("drivers/IEDriverServer.exe");
             System.setProperty("webdriver.ie.driver", driverPath.getPath());
@@ -46,12 +43,12 @@ public class DriverFactory {
         }
     }
 
-    public static RemoteWebDriver getDriver(){
-        return driver;
+    public static RemoteWebDriver getDriver() {
+        return driver.get();
     }
 
-    public static String getBrowser(){
-        return browser;
+    public static String getBrowser() {
+        return browser.get();
     }
 
 }

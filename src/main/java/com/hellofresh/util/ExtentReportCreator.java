@@ -22,7 +22,7 @@ public class ExtentReportCreator {
 
     static ExtentHtmlReporter htmlReporter;
     static ExtentReports extent;
-    static ExtentTest logger;
+    static ThreadLocal<ExtentTest> logger = new ThreadLocal<ExtentTest>();
 
     public static void startReport(){
 
@@ -42,29 +42,29 @@ public class ExtentReportCreator {
     }
 
     public static ExtentTest initializeLogger(){
-        logger = extent.createTest(TestNGListener.getCurrentTest());
-        return logger;
+        logger.set(extent.createTest(TestNGListener.getCurrentTest()));
+        return logger.get();
     }
 
     public static void getResult(ITestResult result){
 //        logger = extent.createTest(result.getName());
 
         if(result.getStatus() == ITestResult.SUCCESS){
-            logger.log(Status.PASS, MarkupHelper.createLabel(result.getName()+" - Test Case Passed", ExtentColor.GREEN));
+            logger.get().log(Status.PASS, MarkupHelper.createLabel(result.getName()+" - Test Case Passed", ExtentColor.GREEN));
 
         } else if(result.getStatus() == ITestResult.FAILURE){
-                logger.log(Status.FAIL, MarkupHelper.createLabel(
+                logger.get().log(Status.FAIL, MarkupHelper.createLabel(
                         result.getName()+" - Test Case Failed<br/>"+
                         "Error: "+result.getThrowable().getMessage(), ExtentColor.RED));
             try {
                 String path = ScreenCapture.getScreenshotPath()+ScreenCapture.getImgFileName();
-                logger.log(Status.INFO, "Screen capture:", MediaEntityBuilder.createScreenCaptureFromPath(path).build());
+                logger.get().log(Status.INFO, "Screen capture:", MediaEntityBuilder.createScreenCaptureFromPath(path).build());
             } catch (IOException e) {
                 e.printStackTrace();
             }
 
         }else if(result.getStatus() == ITestResult.SKIP){
-            logger.log(Status.SKIP, MarkupHelper.createLabel(result.getName() + " - Test Case Skipped", ExtentColor.ORANGE));
+            logger.get().log(Status.SKIP, MarkupHelper.createLabel(result.getName() + " - Test Case Skipped", ExtentColor.ORANGE));
         }
     }
 
@@ -73,6 +73,6 @@ public class ExtentReportCreator {
     }
 
     public static ExtentTest getLogger(){
-        return logger;
+        return logger.get();
     }
 }
