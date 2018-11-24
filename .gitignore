@@ -1,0 +1,14 @@
+# file-based project format:
+*.iws
+*.ipr
+*.iml
+
+# generated folders
+target/
+.idea/
+
+# exclude everything
+logs/*
+
+# exception to the rule
+!logs/.gitkeep.txt 

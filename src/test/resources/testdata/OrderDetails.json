@@ -1,0 +1,12 @@
+{
+  "items" : [
+    {
+      "dress": "Skater",
+      "size": "UK8",
+      "color": "Black"
+    }, {
+      "dress": "Skater",
+      "size": "UK10",
+      "color": "Red"
+    }]
+}
