@@ -15,7 +15,7 @@ public class TestNGListener implements ITestListener {
 
     public void onTestStart(ITestResult iTestResult) {
         log.info("[Test Starting] : " + getMethodName(iTestResult));
-        currentTest.set(getMethodName(iTestResult)+"_"+ DriverFactory.getBrowser());
+        currentTest.set(getMethodName(iTestResult) + "_" + DriverFactory.getBrowser());
         ExtentReportCreator.initializeLogger();
     }
 
@@ -46,15 +46,15 @@ public class TestNGListener implements ITestListener {
         log.info("--- All Test Finished ---");
     }
 
-    private static String getMethodName(ITestResult iTestResult){
+    private static String getMethodName(ITestResult iTestResult) {
         return iTestResult.getMethod().getConstructorOrMethod().getName();
     }
 
-    public static ITestResult getCurrentResults(){
+    public static ITestResult getCurrentResults() {
         return currentResults.get();
     }
 
-    public static String getCurrentTest(){
+    public static String getCurrentTest() {
         return currentTest.get();
     }
 

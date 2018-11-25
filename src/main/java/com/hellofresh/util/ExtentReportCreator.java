@@ -5,7 +5,6 @@ import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.MediaEntityBuilder;
 import com.aventstack.extentreports.Status;
 import com.aventstack.extentreports.markuputils.ExtentColor;
-import com.aventstack.extentreports.markuputils.Markup;
 import com.aventstack.extentreports.markuputils.MarkupHelper;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 import com.aventstack.extentreports.reporter.configuration.ChartLocation;
@@ -16,7 +15,6 @@ import org.testng.ITestResult;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
-import java.util.logging.Logger;
 
 /**
  * Handles all report creation related functionality using the 3rd party library ExtentReport

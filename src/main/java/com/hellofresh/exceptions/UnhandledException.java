@@ -7,7 +7,6 @@ import org.apache.log4j.Logger;
  * Handles all Unknown exceptions, that are not captured by other exception categories
  *
  * @author Nilanthi
- * @version 1.0-SNAPSHOT
  * @since 21/11/2018
  */
 public class UnhandledException extends TestAutomationException {

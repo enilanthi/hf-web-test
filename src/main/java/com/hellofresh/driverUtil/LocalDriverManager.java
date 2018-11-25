@@ -2,10 +2,6 @@ package com.hellofresh.driverUtil;
 
 import org.openqa.selenium.WebDriver;
 
-import java.io.File;
-import java.io.IOException;
-import java.net.URL;
-
 /**
  * Manages the web driver instances
  *

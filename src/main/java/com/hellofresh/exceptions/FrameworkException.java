@@ -8,7 +8,6 @@ import org.apache.log4j.Logger;
  * Handle all framework related exceptions
  *
  * @author Nilanthi
- * @version 1.0-SNAPSHOT
  * @since 21/11/2018
  */
 public class FrameworkException extends TestAutomationException {

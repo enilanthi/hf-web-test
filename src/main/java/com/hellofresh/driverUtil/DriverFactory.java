@@ -3,7 +3,6 @@ package com.hellofresh.driverUtil;
 import com.hellofresh.exceptions.ScriptException;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
 import java.net.URL;
@@ -31,6 +30,7 @@ public class DriverFactory {
 
     /**
      * Create the webdriver instance based on the browser tyoe
+     *
      * @param browserType Type of the browser against which tests should be executed.
      *                    Example, chrome, firefox etc.
      * @return remote webdriver
@@ -46,17 +46,14 @@ public class DriverFactory {
             URL driverPath = DriverFactory.class.getClassLoader().getResource("drivers/geckodriver.exe");
             System.setProperty("webdriver.gecko.driver", driverPath.getPath());
             return new FirefoxDriver();
-        } else if (browserType.equalsIgnoreCase("ie")) {
-            URL driverPath = DriverFactory.class.getClassLoader().getResource("drivers/IEDriverServer.exe");
-            System.setProperty("webdriver.ie.driver", driverPath.getPath());
-            return new InternetExplorerDriver();
         } else {
-            throw new ScriptException("Invalid browser type. Valid types are: chrome, firefox, ie");
+            throw new ScriptException("Invalid browser type. Valid types are: chrome or firefox");
         }
     }
 
     /**
      * Returns the browser instance
+     *
      * @return
      */
     public static RemoteWebDriver getDriver() {
@@ -65,6 +62,7 @@ public class DriverFactory {
 
     /**
      * Returns the browser type
+     *
      * @return
      */
     public static String getBrowser() {

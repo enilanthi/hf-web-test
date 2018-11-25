@@ -1,6 +1,5 @@
 package com.hellofresh.util;
 
-import com.hellofresh.driverUtil.DriverFactory;
 import com.hellofresh.exceptions.ScriptException;
 import com.hellofresh.exceptions.TestAutomationException;
 import com.hellofresh.exceptions.UnhandledException;
@@ -22,6 +21,7 @@ public class TestDataReader {
 
     /**
      * Reads test data from the specified json file
+     *
      * @param fileName json file to be read
      * @return JSONObject
      * @throws TestAutomationException
@@ -37,7 +37,7 @@ public class TestDataReader {
             throw new ScriptException(e.getMessage());
         } catch (ParseException e) {
             throw new ScriptException(e.getMessage());
-        } catch (Exception e){
+        } catch (Exception e) {
             throw new UnhandledException(e.getMessage());
         }
     }

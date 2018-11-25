@@ -1,10 +1,10 @@
 package com.hellofresh.base;
 
+import com.hellofresh.driverUtil.DriverFactory;
+import com.hellofresh.driverUtil.LocalDriverManager;
 import com.hellofresh.exceptions.ScriptException;
 import com.hellofresh.listeners.TestNGListener;
-import com.hellofresh.driverUtil.DriverFactory;
 import com.hellofresh.util.ExtentReportCreator;
-import com.hellofresh.driverUtil.LocalDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.*;
 
@@ -16,14 +16,13 @@ import java.util.concurrent.TimeUnit;
  *
  * @author Nilanthi
  * @since 21/11/2018
- *
  */
 public class BaseTest {
 
     protected WebDriver driver;
 
     @BeforeTest
-    public void testSetup(){
+    public void testSetup() {
         ExtentReportCreator.startReport();
     }
 
@@ -36,25 +35,24 @@ public class BaseTest {
         driver.manage().window().maximize();
         driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-//        driver.get("http://automationpractice.com/index.php");
         driver.get(url);
 
         LocalDriverManager.setWebDriver(driver);
     }
 
     @AfterMethod
-    public void tearDown(){
+    public void tearDown() {
         ExtentReportCreator.getResult(TestNGListener.getCurrentResults());
 
         driver = LocalDriverManager.getDriver();
         if (driver != null) {
             driver.close();
-            driver.quit();
+//            driver.quit();
         }
     }
 
     @AfterTest
-    public void testTearDown(){
+    public void testTearDown() {
         ExtentReportCreator.endReport();
     }
 

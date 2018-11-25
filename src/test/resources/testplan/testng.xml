@@ -8,17 +8,18 @@
 
     <test name = "Chrome TEST">
         <parameter name="browser" value="Chrome"></parameter>
-        <parameter name="url" value="https://www.google.co.uk/"></parameter>
+        <parameter name="url" value="http://automationpractice.com/index.php"></parameter>
         <classes>
-            <class name="com.hellofresh.challenge.tests.SearchTest"></class>
+            <class name="com.hellofresh.challenge.tests.HelloFreshWebTest"></class>
         </classes>
     </test>
 
-    <test name = "Firefox TEST">
+    <test name = "FireFox TEST">
         <parameter name="browser" value="Firefox"></parameter>
-        <parameter name="url" value="https://www.google.co.uk/"></parameter>
+        <parameter name="url" value="http://automationpractice.com/index.php"></parameter>
         <classes>
-            <class name="com.hellofresh.challenge.tests.SearchTest"></class>
+            <class name="com.hellofresh.challenge.tests.HelloFreshWebTest"></class>
         </classes>
     </test>
+
 </suite>
