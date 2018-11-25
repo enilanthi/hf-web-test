@@ -7,6 +7,7 @@ import com.hellofresh.exceptions.TestAutomationException;
 import com.hellofresh.exceptions.UnhandledException;
 import com.hellofresh.util.ExtentReportCreator;
 import com.hellofresh.util.ScreenCapture;
+import org.apache.log4j.Logger;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -20,6 +21,8 @@ import org.testng.Assert;
  * @since 21/11/2018
  */
 public class BasePage {
+
+    private static Logger log = Logger.getLogger(BasePage.class);
 
     protected static Faker faker = new Faker();
 
@@ -91,6 +94,7 @@ public class BasePage {
     private void handleAssertionFailure(String message) {
         try {
             ScreenCapture.captureScreenshot();
+            log.error(message);
             Assert.fail(message);
         } catch (Exception e) {
             e.printStackTrace();

@@ -40,6 +40,9 @@ public class HelloFreshWebTest extends BaseTest {
                         "12345678")
                 .clickCatoryAsWomen()
                 .clickShortSleeveTshirt()
+                // NOTE: quantity and size are read from external file
+                .itemDetailsPage_selectQuantity()
+                .itemDetailsPage_selectSize()
                 .itemDetailsPage_clickAddToCartButton()
                 .itemDetailsPage_clickProceedToCheckoutButton()
                 .shoppingCartSummaryPage_clickProceedToCheckout()

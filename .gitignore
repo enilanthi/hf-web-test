@@ -6,9 +6,4 @@
 # generated folders
 target/
 .idea/
-
-# exclude everything
-logs/*
-
-# exception to the rule
-!logs/.gitkeep.txt 
+logs/
