@@ -11,17 +11,35 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.net.URL;
 
+/**
+ * Generate screenshots of the web application under test
+ *
+ * @author Nilanthi
+ * @since 21/11/2018
+ */
 public class ScreenCapture {
 
+    /**
+     * Returns the path under which the screenshot will be generated
+     * @return
+     */
     public static String getScreenshotPath() {
         URL inputStream = ScreenCapture.class.getProtectionDomain().getCodeSource().getLocation();
         return inputStream.getPath() + "../screenshots/browser/";
     }
 
+    /**
+     * Returns the name of the image file (screenshot)
+     * @return
+     */
     public static String getImgFileName() {
         return TestNGListener.getCurrentTest() + "_" + DriverFactory.getBrowser() + ".png";
     }
 
+    /**
+     * Takes the screen capture
+     * @throws TestAutomationException
+     */
     public static void captureScreenshot() throws TestAutomationException {
 
         String path = getScreenshotPath();

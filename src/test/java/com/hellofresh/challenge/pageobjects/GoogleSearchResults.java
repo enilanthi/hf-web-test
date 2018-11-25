@@ -11,7 +11,7 @@ public class GoogleSearchResults extends BasePage {
 
     public GoogleSearchResults verifyResults(String result) throws TestAutomationException {
         test_step_logger();
-        verifyTrue(findElement(By.xpath("//h3[text()=\""+result+"\"]")).isDisplayed(), "Expected results not found");
+        verifyTrue(findElement(By.xpath("//h3[text()=\""+result+"\"]")).isDisplayed());
         log.info("[Step]: Verify search results: "+result);
         return this;
     }

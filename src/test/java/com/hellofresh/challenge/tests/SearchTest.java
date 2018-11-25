@@ -12,18 +12,19 @@ public class SearchTest extends BaseTest {
         new GoogleSearch().entryQuery("Selenium").getSearchResults().verifyResults("Selenium - Web Browser Automation");
     }
 
-//    @Test
+    @Test
     public void searchForAppium() throws TestAutomationException {
-        new GoogleSearch().entryQuery("Appium").getSearchResults().verifyResults("Selenium - Web Browser Automation");
+        new GoogleSearch().entryQuery("Appium").getSearchResults();
+//                .verifyResults("Selenium - Web Browser Automation");
     }
 
     @Test
     public void searchForRandomText() throws TestAutomationException {
         new GoogleSearch().enterRandomQuery().getSearchResults().verifyResults("SriLanka");
-//        try {
-//            Thread.sleep(10000);
-//        } catch (InterruptedException e) {
-//            e.printStackTrace();
-//        }
+    }
+
+//    @Test
+    public void searchFromDataFile() throws TestAutomationException {
+        new GoogleSearch().searchFromDataFile().getSearchResults();
     }
 }

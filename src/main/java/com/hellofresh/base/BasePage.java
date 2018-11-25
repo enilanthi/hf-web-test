@@ -12,10 +12,22 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
+/**
+ * This class handles the webelements gracefuly and delegate assertion methods for page objects class.
+ * All Page object classes need to extended this class.
+ *
+ * @author Nilanthi
+ * @since 21/11/2018
+ */
 public class BasePage {
 
     protected static Faker faker = new Faker();
 
+    /**
+     * Finds the element that matches the given criteria
+     * @param findBy the locator strategy used to identify the component
+     * @return Web element that matched
+     */
     protected WebElement findElement(By findBy) throws TestAutomationException {
         try {
             WebDriver driver = DriverFactory.getDriver();
@@ -29,7 +41,12 @@ public class BasePage {
         }
     }
 
-    public void verifyEquals(String actual, String expected, String message) {
+    /**
+     * Asserts that the two Strings are equal.
+     * @param actual actual value
+     * @param expected expected value
+     */
+    protected void verifyEquals(String actual, String expected) {
         try {
             Assert.assertEquals(actual, expected);
         } catch (AssertionError e) {
@@ -37,7 +54,11 @@ public class BasePage {
         }
     }
 
-    public void verifyTrue(boolean condition, String message) {
+    /**
+     * Asserts that the given condition is true
+     * @param condition the condition to be checked
+     */
+    protected void verifyTrue(boolean condition) {
         try {
             Assert.assertTrue(condition);
         } catch (AssertionError e) {
@@ -47,7 +68,6 @@ public class BasePage {
 
     private void handleAssertionFailure(String message) {
         try {
-//            TODO verify this
             ScreenCapture.captureScreenshot();
             Assert.fail(message);
         } catch (Exception e) {
@@ -55,6 +75,9 @@ public class BasePage {
         }
     }
 
+    /**
+     * Track page-objects steps and share with extent report
+     */
     protected void test_step_logger() {
         ExtentReportCreator.getLogger().info("[Step]: " +
                 Thread.currentThread().getStackTrace()[2].getFileName() + "#" +

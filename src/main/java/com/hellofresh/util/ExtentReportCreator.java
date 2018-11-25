@@ -18,12 +18,21 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.logging.Logger;
 
+/**
+ * Handles all report creation related functionality using the 3rd party library ExtentReport
+ *
+ * @author Nilanthi
+ * @since 21/11/2018
+ */
 public class ExtentReportCreator {
 
-    static ExtentHtmlReporter htmlReporter;
-    static ExtentReports extent;
-    static ThreadLocal<ExtentTest> logger = new ThreadLocal<ExtentTest>();
+    private static ExtentHtmlReporter htmlReporter;
+    private static ExtentReports extent;
+    private static ThreadLocal<ExtentTest> logger = new ThreadLocal<ExtentTest>();
 
+    /**
+     * Sets all necessary configurations for the report
+     */
     public static void startReport(){
 
         URL inputStream = ExtentReportCreator.class.getProtectionDomain().getCodeSource().getLocation();
@@ -46,8 +55,11 @@ public class ExtentReportCreator {
         return logger.get();
     }
 
+    /**
+     * Logs the end results of a test case in report
+     * @param result
+     */
     public static void getResult(ITestResult result){
-//        logger = extent.createTest(result.getName());
 
         if(result.getStatus() == ITestResult.SUCCESS){
             logger.get().log(Status.PASS, MarkupHelper.createLabel(result.getName()+" - Test Case Passed", ExtentColor.GREEN));
@@ -68,10 +80,17 @@ public class ExtentReportCreator {
         }
     }
 
+    /**
+     * Flush ExtentReports content
+     */
     public static void endReport(){
         extent.flush();
     }
 
+    /**
+     * Returns ExtentTest instance
+     * @return
+     */
     public static ExtentTest getLogger(){
         return logger.get();
     }

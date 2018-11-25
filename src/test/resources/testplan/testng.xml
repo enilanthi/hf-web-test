@@ -1,21 +1,22 @@
 <?xml version = "1.0" encoding = "UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
-<suite name = "HelloFresh Web Challenge" parallel="tests" thread-count="2">
-<!--<suite name = "HelloFresh Web Challenge" parallel="tests">-->
+<suite name = "HelloFresh Web Challenge" parallel="tests" thread-count="2" configfailurepolicy="continue">
     <listeners>
         <listener class-name="com.hellofresh.listeners.TestNGListener"/>
     </listeners>
 
     <test name = "Chrome TEST">
         <parameter name="browser" value="Chrome"></parameter>
+        <parameter name="url" value="https://www.google.co.uk/"></parameter>
         <classes>
             <class name="com.hellofresh.challenge.tests.SearchTest"></class>
         </classes>
     </test>
 
     <test name = "Firefox TEST">
-        <parameter name="browser" value="firefox"></parameter>
+        <parameter name="browser" value="Firefox"></parameter>
+        <parameter name="url" value="https://www.google.co.uk/"></parameter>
         <classes>
             <class name="com.hellofresh.challenge.tests.SearchTest"></class>
         </classes>
