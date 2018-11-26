@@ -56,9 +56,9 @@ public class BaseTest {
         ExtentReportCreator.endReport();
     }
 
-//    @AfterSuite
-//    public void suiteTearDown(){
-//        LocalDriverManager.killWebDriverProcess();
-//    }
+    @AfterSuite
+    public void suiteTearDown() {
+        LocalDriverManager.killWebDriverProcess();
+    }
 
 }
