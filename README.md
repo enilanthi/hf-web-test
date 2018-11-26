@@ -12,7 +12,7 @@
 > - Simply trigger the execution using ```mvn clean test``` command
 
 #### Additional Information:
-> - The test execution will start parallely on Chrome and FireFox. For some reason if you want to disable the execution on either of the browsers, goto testng.xml (which can be found in ```hf-web-test\src\test\resources\testplan```), and comment-out the section for Chrome Test or FireFox Test.
+> - The test execution will start parallely on Chrome and FireFox. For some reason if you want to disable the execution on either of the browsers, goto TestNG xml file (which can be found in ```hf-web-test\src\test\resources\testplan\testng.xml```), and comment-out the section for Chrome Test or FireFox Test.
 > - ```NOTE: Apart from the 3 test cases already given, a 4th test is added to demonstrate the behavior on the failure.```
 > - Logs will be generated under: ```hf-web-test\logs```
 > - A comprehensive html report will be generated under: ```hf-web-test\target\extent-reports\test-output```. Note: This will also have screencapture(s) attached to the failed test(s)
