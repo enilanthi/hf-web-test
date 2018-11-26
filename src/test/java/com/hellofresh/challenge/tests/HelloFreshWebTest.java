@@ -23,6 +23,7 @@ public class HelloFreshWebTest extends BaseTest {
 
     @Test
     public void existingUserSignInTest() throws TestAutomationException {
+//        NOTE: The given credentials for "hf_challenge_123456@hf12345.com", doesn't work. Hence, created a new user
         new HomePage().homePage_clickSignIn()
                 .signInPage_signInToAccount("autouser24112018@autoprac12345.com",
                         "12345678")
@@ -59,6 +60,7 @@ public class HelloFreshWebTest extends BaseTest {
 
     @Test
     public void existingUserSignIn_FailingTest() throws TestAutomationException {
+//         NOTE: This test is intentionally written to demonstrate failure scenario
         new HomePage().homePage_clickSignIn()
                 .signInPage_signInToAccount("autouser24112018@autoprac12345.com",
                         "12345678")
