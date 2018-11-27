@@ -17,6 +17,7 @@
 > - Logs will be generated under: ```hf-web-test\logs```
 > - A comprehensive html report will be generated under: ```hf-web-test\target\extent-reports\test-output```. Note: This will also have screencapture(s) attached to the failed test(s)
 > - You can also directly access these Screenshots under: ```hf-web-test\target\screenshots\browser```
+- ```**NOTE: Compatible FireFox version: 61 or above```
 
 ### Features:
 - [x] Logging all details of execution (Including all test steps, and failure details)
